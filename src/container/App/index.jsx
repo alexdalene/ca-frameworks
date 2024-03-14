@@ -1,4 +1,5 @@
 import Home from '../Home';
+import Product from '../Home/Product';
 import Contact from '../Contact';
 import Cart from '../Cart';
 
@@ -12,6 +13,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path='contact' element={<Contact />} />
         <Route path='cart' element={<Cart />} />
+        <Route path='/:id' element={<Product />} />
       </Route>
     </Routes>
   );

@@ -1,6 +1,10 @@
+import useCartStore from '../../../services/store';
+
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
+  const cartAmount = useCartStore((state) => state.items.length);
+
   return (
     <header>
       <nav>
@@ -12,7 +16,7 @@ const Header = () => {
             <NavLink to='/contact'>Contact</NavLink>
           </li>
           <li>
-            <NavLink to='/cart'>Cart</NavLink>
+            <NavLink to='/cart'>Cart {cartAmount}</NavLink>
           </li>
         </ul>
       </nav>

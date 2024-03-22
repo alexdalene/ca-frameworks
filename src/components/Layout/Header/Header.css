@@ -1,0 +1,46 @@
+header {
+  width: 100%;
+  padding-block: 1rem;
+  position: sticky;
+  top: 0;
+
+  & > nav {
+    width: fit-content;
+    margin: 0 auto;
+
+    & > ul {
+      list-style: none;
+      margin: 0;
+      padding: 0.625rem 1rem;
+
+      display: flex;
+      gap: 0.625rem;
+
+      background-color: #eeeeee71;
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+
+      & > li > a {
+        color: #213547;
+      }
+    }
+  }
+}
+
+.cart {
+  position: relative;
+
+  & > span {
+    position: absolute;
+    background-color: rgb(246, 54, 54);
+    border-radius: 9999px;
+    width: 20px;
+    height: 20px;
+    color: white;
+    top: -10px;
+    left: 25px;
+    font-size: 10px;
+    display: grid;
+    place-content: center;
+  }
+}

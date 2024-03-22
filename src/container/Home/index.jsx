@@ -3,11 +3,11 @@ import Item from '../../components/Home/Item';
 
 import { useEffect, useState } from 'react';
 
-const url = 'https://v2.api.noroff.dev/online-shop';
 let isLoading = true;
 
 const Home = () => {
   const [posts, setPosts] = useState(null);
+  const url = 'https://v2.api.noroff.dev/online-shop';
 
   useEffect(() => {
     const fetchData = async () => {

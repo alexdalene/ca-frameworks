@@ -1,4 +1,5 @@
 import useCartStore from '../../../services/store/store';
+import './Header.css';
 
 import { NavLink } from 'react-router-dom';
 
@@ -16,7 +17,9 @@ const Header = () => {
             <NavLink to='/contact'>Contact</NavLink>
           </li>
           <li>
-            <NavLink to='/cart'>Cart {cartAmount}</NavLink>
+            <NavLink to='/cart' className='cart'>
+              Cart <span>{cartAmount}</span>
+            </NavLink>
           </li>
         </ul>
       </nav>

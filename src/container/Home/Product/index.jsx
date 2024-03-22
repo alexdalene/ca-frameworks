@@ -1,8 +1,11 @@
+import useCartStore from '../../../services/store/store';
+
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const Product = () => {
   const [product, setProduct] = useState(null);
+  const addToCart = useCartStore((state) => state.addToCart);
 
   const { id } = useParams();
 
@@ -35,6 +38,7 @@ const Product = () => {
         <div>
           <h1>{product.title}</h1>
           <img src={product.image.url} alt={product.image.alt} />
+          <button onClick={() => addToCart(product)}>Add to cart</button>
         </div>
       ) : (
         <p>Loading...</p>

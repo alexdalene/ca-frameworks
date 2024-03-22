@@ -1,21 +1,20 @@
-import useCartStore from '../../services/store';
+import useCartStore from '../../services/store/store';
+import CartItem from '../../components/Cart/CartItem';
+
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const cartItems = useCartStore((state) => state.items);
-  console.log(cartItems);
+  const clearCart = useCartStore((state) => state.clearCart);
 
   return (
     <div>
       <h1>Cart page</h1>
+      <button onClick={() => clearCart()}>Clear cart</button>
+      <Link to={'/checkout'}>Checkout</Link>
       <ul>
         {cartItems.map((item) => {
-          return (
-            <li key={item.product.id}>
-              <h2>{item.product.title}</h2>
-              <p>Quantity: {item.quantity}</p>
-              <img src={item.product.image.url} alt={item.product.image.alt} />
-            </li>
-          );
+          return <CartItem key={item.product.id} {...item} />;
         })}
       </ul>
     </div>

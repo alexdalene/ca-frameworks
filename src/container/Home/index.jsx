@@ -1,25 +1,27 @@
-import './styles.css';
-import useCartStore from '../../services/store';
+import './Home.css';
+import Item from '../../components/Home/Item';
 
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const url = 'https://v2.api.noroff.dev/online-shop';
 let isLoading = true;
 
 const Home = () => {
   const [posts, setPosts] = useState(null);
-  const addToCart = useCartStore((state) => state.addToCart);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(url);
-      const posts = await response.json();
-      setPosts(posts);
-    }
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const posts = await response.json();
+        setPosts(posts);
+        isLoading = false;
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
     fetchData();
-    isLoading = false;
 
     return () => {
       isLoading = true;
@@ -28,26 +30,13 @@ const Home = () => {
 
   if (!isLoading) {
     const { data } = posts;
-    console.log(data);
 
     return (
       <div>
         <h1>Home</h1>
         <ul>
           {data.map((data) => {
-            return (
-              <li key={data.id}>
-                <Link to={`/${data.id}`}>
-                  <img
-                    src={data.image?.url}
-                    alt={data.image?.alt}
-                    loading='lazy'
-                  />
-                </Link>
-                <h2>{data.title}</h2>
-                <button onClick={() => addToCart(data)}>Add to cart</button>
-              </li>
-            );
+            return <Item key={data.id} {...data} />;
           })}
         </ul>
       </div>

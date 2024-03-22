@@ -1,4 +1,4 @@
-import useCartStore from '../../../services/store';
+import useCartStore from '../../../services/store/store';
 
 import { NavLink } from 'react-router-dom';
 
